@@ -24,12 +24,19 @@ const TodoList = () => {
   `);
 
   return (
-    <div>
-      <h3>Todo Items</h3>
-      <ul>
+    <div className="todo_list">
+      <h3 className="todo_list__header">Todo Items</h3>
+      <ul className="todo_list__list">
         {data?.todoItems
           ? data.todoItems.map((item) => (
-              <li key={item.id} className={item.isCompleted ? "completed" : ""}>
+              <li
+                key={item.id}
+                className={
+                  item.isCompleted
+                    ? "todo_list__item todo_list__item--completed"
+                    : "todo_list__item"
+                }
+              >
                 {item.content}
               </li>
             ))

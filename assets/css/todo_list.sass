@@ -1,0 +1,29 @@
+.todo_list
+  margin: 2rem
+
+.todo_list__header
+  font-family: "Nunito", sans-serif
+  font-weight: 800
+  font-size: 31px
+  margin: 0
+  color: rgb(0, 122, 255)
+
+.todo_list__list
+  margin: 0
+
+.todo_list__item
+  line-height: 2.5
+  list-style: none
+  border-bottom: 1px solid #eee
+  position: relative
+
+  &::before
+    position: absolute
+    content: ''
+    height: 1.2rem
+    width: 1.2rem
+    border: 1px solid #ccc
+    border-radius: 50%
+    left: -2em
+    top: 50%
+    transform: translateY(-50%)
