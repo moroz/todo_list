@@ -6,6 +6,9 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
+    "apollo-boost": "^0.4.7",
+    "graphql": "^15.0.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "react": "^16.13.1",
