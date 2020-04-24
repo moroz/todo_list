@@ -1,11 +1,12 @@
 import React from "react";
 import client from "./client";
 import { ApolloProvider } from "@apollo/react-hooks";
+import TodoList from "./TodoList";
 
 const TodoApp = () => {
   return (
     <ApolloProvider client={client}>
-      <h1>Hello from React!</h1>
+      <TodoList />
     </ApolloProvider>
   );
 };
