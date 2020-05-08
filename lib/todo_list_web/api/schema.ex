@@ -29,6 +29,26 @@ defmodule TodoListWeb.Api.Schema do
       end)
     end
 
+    field :delete_todo_item, :boolean do
+      arg(:id, non_null(:id))
+
+      resolve(fn %{id: id}, _ ->
+        todo = Todos.get_item!(id)
+        Todos.delete_item(todo)
+        {:ok, true}
+      end)
+    end
+
+    field :update_todo_item, :todo_item do
+      arg(:id, non_null(:id))
+      arg(:content, non_null(:string))
+
+      resolve(fn %{id: id, content: content}, _ ->
+        todo = Todos.get_item!(id)
+        Todos.update_item(todo, %{content: content})
+      end)
+    end
+
     field :toggle_todo_item, :todo_item do
       arg(:id, non_null(:id))
 
