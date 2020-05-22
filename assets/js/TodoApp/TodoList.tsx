@@ -7,17 +7,17 @@ import TodoListItem from "./TodoListItem";
 interface TodoItemsQueryResult {
   todoItems: TodoItem[];
 }
-
-const TodoList = () => {
-  const { data, loading } = useQuery<TodoItemsQueryResult>(gql`
-    {
-      todoItems {
-        id
-        content
-        isCompleted
-      }
+export const GET_TODO_ITEMS = gql`
+  {
+    todoItems {
+      id
+      content
+      isCompleted
     }
-  `);
+  }
+`;
+const TodoList = () => {
+  const { data, loading } = useQuery<TodoItemsQueryResult>(GET_TODO_ITEMS);
 
   return (
     <div className="todo_list">
