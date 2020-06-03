@@ -1,9 +1,12 @@
 .todo_list
   margin: 2rem
   --primary: rgb(0, 122, 255)
+  display: flex
+  flex-direction: column
+  height: calc(100vh - 4rem)
 
 .todo_list__header
-  font-family: "Nunito", sans-serif
+  font-family: $font-emph
   font-weight: 800
   font-size: 31px
   margin: 0
@@ -11,11 +14,13 @@
 
 .todo_list__list
   margin: 0
+  flex: 1
 
 .todo_item
   line-height: 2.5
   list-style: none
   position: relative
+  display: flex
 
 .todo_item__content
   border: none

@@ -3,6 +3,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import TodoItem from "./types/TodoItem";
 import TodoListItem from "./TodoListItem";
+import NewTodoButton from "./NewTodoButton";
 
 interface TodoItemsQueryResult {
   todoItems: TodoItem[];
@@ -17,7 +18,7 @@ export const GET_TODO_ITEMS = gql`
   }
 `;
 const TodoList = () => {
-  const { data, loading } = useQuery<TodoItemsQueryResult>(GET_TODO_ITEMS);
+  const { data } = useQuery<TodoItemsQueryResult>(GET_TODO_ITEMS);
 
   return (
     <div className="todo_list">
@@ -27,6 +28,7 @@ const TodoList = () => {
           <TodoListItem key={item.id} {...item} />
         ))}
       </div>
+      <NewTodoButton />
     </div>
   );
 };
