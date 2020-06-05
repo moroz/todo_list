@@ -39,10 +39,15 @@ const NewTodoItem = ({ handleHide }: Props) => {
   const submit = useCallback(
     async (e?: FormEvent) => {
       e?.preventDefault();
-      await createTodoItem({ variables: { content } });
-      setContent("");
+      const trimmed = content.trim();
+      if (trimmed !== "") {
+        await createTodoItem({ variables: { content: trimmed } });
+        setContent("");
+      } else {
+        handleHide();
+      }
     },
-    [createTodoItem, content]
+    [createTodoItem, content, handleHide, setContent]
   );
 
   const handleBlur = async () => {
