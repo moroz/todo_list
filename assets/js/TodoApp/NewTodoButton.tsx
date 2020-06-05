@@ -1,16 +1,18 @@
 import React from "react";
 import Icon from "./NewTodoButton/icon";
 
-interface Props {}
+interface Props {
+  onClick(): void;
+}
 
-const NewTodoButton = ({}: Props) => {
+const NewTodoButton = ({ onClick }: Props) => {
   return (
-    <div className="new_todo_button">
+    <button className="new_todo_button" onClick={onClick}>
       <span className="new_todo_button__icon">
         <Icon />
       </span>
-      New Todo Item
-    </div>
+      New Todo
+    </button>
   );
 };
 

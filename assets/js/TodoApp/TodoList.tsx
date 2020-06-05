@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import TodoItem from "./types/TodoItem";
 import TodoListItem from "./TodoListItem";
 import NewTodoButton from "./NewTodoButton";
+import NewTodoItem from "./NewTodoItem";
 
 interface TodoItemsQueryResult {
   todoItems: TodoItem[];
@@ -19,6 +20,11 @@ export const GET_TODO_ITEMS = gql`
 `;
 const TodoList = () => {
   const { data } = useQuery<TodoItemsQueryResult>(GET_TODO_ITEMS);
+  const [formShowing, setFormShowing] = useState(false);
+  const showForm = useCallback(() => {
+    setFormShowing(true);
+  }, []);
+  const hideForm = () => setFormShowing(false);
 
   return (
     <div className="todo_list">
@@ -27,8 +33,11 @@ const TodoList = () => {
         {data?.todoItems?.map((item: TodoItem) => (
           <TodoListItem key={item.id} {...item} />
         ))}
+        {formShowing ? <NewTodoItem handleHide={hideForm} /> : null}
       </div>
-      <NewTodoButton />
+      <footer className="footer">
+        <NewTodoButton onClick={showForm} />
+      </footer>
     </div>
   );
 };
