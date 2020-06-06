@@ -1,9 +1,17 @@
 .todo_list
-  margin: 2rem
+  margin: 0
+  padding: 2rem 0 2rem 2rem
+  min-height: 100vh
   --primary: rgb(0, 122, 255)
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
+
+.todo_list__spacer
+  flex: 1
 
 .todo_list__header
-  font-family: "Nunito", sans-serif
+  font-family: $font-emph
   font-weight: 800
   font-size: 31px
   margin: 0
@@ -16,6 +24,7 @@
   line-height: 2.5
   list-style: none
   position: relative
+  display: flex
 
 .todo_item__content
   border: none
@@ -29,8 +38,9 @@
   position: absolute
   height: 1.4rem
   width: 1.4rem
-  border: 1px solid #ccc
+  border: 1px solid #aaa
   border-radius: 50%
+  background: transparent
   left: 1em
   top: 50%
   transform: translateY(-50%)
